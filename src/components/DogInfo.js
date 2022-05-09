@@ -1,7 +1,6 @@
 import React from "react";
 
 function DogInfo({ dog }) {
-  console.log(dog)
   return (
     <div id="dog-summary-container">
         <h1>DOGGO:</h1>
