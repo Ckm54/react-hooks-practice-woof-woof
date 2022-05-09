@@ -7,11 +7,12 @@ function App() {
 
   useEffect(() => {
     fetch(`http://localhost:3001/pups`)
-    
-  })
+    .then((res) => res.json())
+    .then((data) => setDogs(data))
+  }, [])
   return (
     <div className="App">
-      <Header />
+      <Header dogs={dogs}/>
       <DogInfo />
     </div>
   );
