@@ -2,11 +2,11 @@ import React from "react"
 import Filter from "./Filter";
 import DogBar from "./DogBar";
 
-function Header() {
+function Header({ dogs }) {
   return (
     <>
       <Filter />
-      <DogBar />
+      <DogBar dogs={dogs}/>
     </>
   )
 }
