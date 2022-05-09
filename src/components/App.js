@@ -5,6 +5,8 @@ import DogInfo from "./DogInfo";
 function App() {
   const [dogs, setDogs] = useState([])
   const [dog, setDog] = useState(dogs[0])
+  const [filter, setFilter] = useState(true)
+  const [goodDogs, setGoodDogs] = useState([])
 
   useEffect(() => {
     fetch(`http://localhost:3001/pups`)
@@ -43,9 +45,19 @@ function App() {
       setDogs(newData)
     })
   }
+
+  function filterGoodDogs() {
+    setFilter(filter => !filter)
+    if (filter) {
+      const goodDogs = [...dogs].filter((dog) => dog.isGoodDog)
+      setGoodDogs(goodDogs)
+    } else {
+      setGoodDogs(dogs)
+    }
+  }
   return (
     <div className="App">
-      <Header dogs={dogs} displayInfo={handleDisplayInfo} />
+      <Header dogs={filter ? dogs : goodDogs} displayInfo={handleDisplayInfo} filterDogs={filterGoodDogs} isFilterOn={filter}/>
       {dog ? <DogInfo dog={dog} handleGoodness={toggleDogGoodness}/> : null}
     </div>
   );

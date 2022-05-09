@@ -1,9 +1,9 @@
 import React from "react";
 
-function Filter() {
+function Filter({filterDogs, isFilterOn}) {
   return (
     <div id="filter-div">
-        <button id="good-dog-filter">Filter good dogs: OFF</button>
+        <button id="good-dog-filter" onClick={filterDogs}>Filter good dogs: {isFilterOn ? "OFF" : "ON"}</button>
       </div>
   )
 }
